@@ -31,20 +31,17 @@ require "model/uloga.php";
     <div class="navigacija d-flex justify-content-between">
         <ul class="nav" id="navigacija-lista" >
             <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="naslovna.php">Naslovna</a>
+                <a class="nav-link" aria-current="page" href="pocetna.php">Naslovna</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="predstava.php">Predstave</a>
+                <a class="nav-link" href="predstave.php">Predstave</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="uloga.php">Uloge</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="profil.php">Profil</a>
-            </li>
-            <li class="nav-item">
-            <p class="">Prijavljen na sistem: <?=$_SESSION['current_user']?></p> 
-            </li>
+            </li>            
         </ul>
         <div>
             <a class="btn btn-danger" href="odjava.php">Log out</a>
@@ -52,8 +49,46 @@ require "model/uloga.php";
     </div>
 </div>
 
+<div class="pocetnaStranaSadrzaj">
+
+    <div class="d-flex p-1 justify-content-center align-items-center">
+        <div>
+            <h3>Dodeljene uloge</h3>
+        </div>
+        <div class="w-50 p-3">
+            <input class="form-control" type="text" placeholder="pretraga" id="pretraga">
+        </div>
+        <div>
+            <input class="form-control" type="button" id="sortBtn" value="sortiraj">
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 g-3 justify-content-center">
+        <?php
+        $uloge=Uloga::getAll($konekcija);
+        while (($uloga=$uloge->fetch_assoc())!=null){?>
+
+                <form method="post" action="uloga.php" class="col">
+                    <div class="card" style="background-color: rgb(255, 122, 127, .8); width: 35vw; margin-left: auto; margin-right: auto;border-radius:25px">
+                        <div class="card-body">
+                            <input type="hidden" name="id_uloge" value="<?=$uloga['id']?>" >
+                            <h5 class="card-title"><?=$uloga['naziv']?></h5>
+                            <?php $predstava=Predstava::getPredstava($uloga['predstava_id'],$konekcija)[0]?>
+                            <p class="card-text">Predstava: <?=$predstava['naziv']." ".$predstava['reditelj']?></p>                                     
+                            <p class="card-text">Glumac: <?=$uloga['glumac']?></p>
+                            <p class="card-text">Naziv uloge: <?=$uloga['naziv']?></p>                     
+                            <?php $korisnikK=User::getUser($uloga['user_id'],$konekcija)[0]?>
+                            <p class="card-text">User dodao: <?=$userU['username']?></p>
+                            <button type="submit" class="btn btn-primary" style="background-color: rgb(11, 218, 81); border: none">Pogledaj</button>
+                        </div>
+                    </div>
+                </form>
 
 
+        <?php }
+        ?>
+    </div>
+</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
