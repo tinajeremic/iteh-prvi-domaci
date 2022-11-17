@@ -40,7 +40,7 @@ form{
     width: 40vw;
     margin-left: auto;
     margin-right: auto;
-
+    color: aliceblue;
 }
 
 .naslovForma, .naslov h2{
@@ -84,3 +84,4 @@ form{
     font-size: 1.1em;
     width: 15%;
 }
+
