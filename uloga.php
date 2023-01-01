@@ -58,7 +58,7 @@ $user = User::getUserUsername($_SESSION['current_user'],$konekcija)[0];
 
 <div class="content">
     <div class="naslov">
-        <h2>Uloga</h2>
+        <h2>Dodeli uloge</h2>
     </div>
 
     <div class="forma" style = "border-radius:25px">
@@ -70,7 +70,7 @@ $user = User::getUserUsername($_SESSION['current_user'],$konekcija)[0];
             <div class="input-group mb-3 container">
                 <span class="input-group-text">Predstava</span>
                 <select class="form-control" type="text" name="predstava_id" placeholder="Predstava" value="">
-                    <option value="0">Prazno</option>
+                    <option value="0">Odaberite predstavu</option>
                     <?php
                     $predstave=Predstava::getAll($konekcija);
                     while(($predstava=$predstave->fetch_assoc())!=null){?>
@@ -81,12 +81,12 @@ $user = User::getUserUsername($_SESSION['current_user'],$konekcija)[0];
             
 
             <div class="input-group mb-3 container">
-                <span class="input-group-text">Glumac</span>
-                <input class="form-control" type="text" name="naziv" value="">
+                <span class="input-group-text">Glumac/-ica</span>
+                <input class="form-control" type="text" name="glumac" value="">
             </div>
             <div class="input-group mb-3 container">
                 <span class="input-group-text">Naziv uloge</span>
-                <input class="form-control" type="text" name="opstina" value="">
+                <input class="form-control" type="text" name="naziv" value="">
             </div>
             
 
@@ -103,10 +103,10 @@ $user = User::getUserUsername($_SESSION['current_user'],$konekcija)[0];
     <div class="prikazPodataka" style = "padding: 20px; border-radius:25px" >
         <div class="d-flex p-1 justify-content-center align-items-center">
             <div>
-                <h3>Uloge</h3>
+                <h3>Glumci i Uloge</h3>
             </div>
             <div class="w-50 p-3">
-                <input class="form-control" type="text" placeholder="pretraga" id="pretraga">
+                <input class="form-control" type="text" placeholder="pretraga uloga" id="pretraga">
             </div>
             <div>
                 <input class="form-control" type="button" id="sortBtn" value="Sortiraj po glumcima" style = "margin-right: 5px">
@@ -126,9 +126,8 @@ $user = User::getUserUsername($_SESSION['current_user'],$konekcija)[0];
                         <div class="card-body">
                             <h5 class="card-title"><?=$uloga['glumac']?></h5>
                             <?php $predstava=Predstava::getPredstava($uloga['predstava_id'],$konekcija)[0]?>
-                            <p class="card-text">Predstava: <?=$predstava['naziv']." ".$predstava['reditelj']?></p>
-                            <p class="card-text">Naziv uloge: <?=$uloga['glumac']?></p>
-                            <p class="card-text karticaNazivUloge">Naziv uloge: <?=$uloga['naziv']?></p>  
+                            <p class="card-text">Predstava: <?=$predstava['naziv']." u režiji: ".$predstava['reditelj']?></p>
+                            <p class="card-text karticaNazivUloge">Uloga: <?=$uloga['naziv']?></p>  
                             <?php $userU=User::getUser($uloga['user_id'],$konekcija)[0]?>
                             <p class="card-text">User dodao: <?=$userU['username']?></p>
                             <input type="radio" name="ulogaCheck" value="<?=$uloga['id']?>">
@@ -153,6 +152,17 @@ $user = User::getUserUsername($_SESSION['current_user'],$konekcija)[0];
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="js/uloga.js"></script>
+
+<?php
+if(isset($_POST['id'])){
+    echo '<script type="text/javascript">
+            popuniFormu('.$_POST["id"].');
+        </script>'
+    ;
+
+}
+?>
 
 </body>
 </html>
