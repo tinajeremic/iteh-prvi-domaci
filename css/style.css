@@ -62,15 +62,14 @@ form{
 }
 
 
-
 .sacuvajBtn{
     border-radius: 20px;
     border-color: rgb(128, 0, 79);
     background-color: rgba(165, 75, 147, 0.85);
     font-size: 1.1em;
     width: 20%;
-
 }
+
 .resetBtn{
     border-radius: 20px;
     border-color: rgb(189, 75, 44);

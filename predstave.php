@@ -75,7 +75,7 @@ $user = User::getUserUsername($_SESSION['current_user'],$konekcija)[0];
             </div>
 
             <div class="d-grid gap-2 d-md-block">
-                <button type="submit"  class="btn btn-success" style="background-color: rgb(255, 122, 127, .8); border: none">Sačuvaj predstavu</button>
+                <button type="submit"  class="btn btn-success" style="background-color: rgb(255, 122, 127, .8); border: none;">Sačuvaj predstavu</button>
                 <button type="reset" id="resetPredstavu" class="btn btn-primary"style="background-color: rgb(255, 122, 127, .8); border: none">Resetuj formu za unos</button>
                 <button type="button" id="obrisiPredstavu" class="btn btn-danger" style="background-color: rgb(255, 122, 127, .8); border: none" >Izbrisi predstavu</button>
             </div>
@@ -116,8 +116,6 @@ $user = User::getUserUsername($_SESSION['current_user'],$konekcija)[0];
         ?>
        </div>
 
-
-
     </div>
 </div>
 
@@ -127,7 +125,7 @@ $user = User::getUserUsername($_SESSION['current_user'],$konekcija)[0];
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js/predstava.js"></script>
-
+<script src="js/searchsort.js"></script>
 
 </body>
 </html>
