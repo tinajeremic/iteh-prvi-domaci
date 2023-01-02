@@ -69,15 +69,14 @@ require "model/uloga.php";
         while (($uloga=$uloge->fetch_assoc())!=null){?>
 
                 <form method="post" action="uloga.php" class="col">
-                    <div class="card" style="background-color: rgb(255, 122, 127, .8); width: 35vw; margin-left: auto; margin-right: auto;border-radius:25px">
+                    <div class="card" style="background: radial-gradient(circle, rgba(122,20,65,1) 0%, rgba(19,44,74,1) 100%); width: 35vw; margin-left: auto; margin-right: auto;border-radius:25px">
                         <div class="card-body">
                             <input type="hidden" name="id_uloge" value="<?=$uloga['id']?>" >
                             <h5 class="card-title"><?=$uloga['naziv']?></h5>
                             <?php $predstava=Predstava::getPredstava($uloga['predstava_id'],$konekcija)[0]?>
                             <p class="card-text">Predstava: <?=$predstava['naziv']." ".$predstava['reditelj']?></p>                                     
-                            <p class="card-text">Glumac: <?=$uloga['glumac']?></p>
-                            <p class="card-text">Naziv uloge: <?=$uloga['naziv']?></p>                     
-                            <?php $korisnikK=User::getUser($uloga['user_id'],$konekcija)[0]?>
+                            <p class="card-text">Glumac: <?=$uloga['glumac']?></p>                                                 
+                            <?php $userU=User::getUser($uloga['user_id'],$konekcija)[0]?>
                             <p class="card-text">User dodao: <?=$userU['username']?></p>
                             <button type="submit" class="btn btn-primary" style="background-color: rgb(11, 218, 81); border: none">Pogledaj</button>
                         </div>

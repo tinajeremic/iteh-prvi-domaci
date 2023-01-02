@@ -83,7 +83,7 @@ $user = User::getUserUsername($_SESSION['current_user'],$konekcija)[0];
         </form>
     </div>
 
-    <div class="prikazPodataka" style = "padding: 20px;border-radius:25px">
+    <div class="prikazPodataka" style = "padding: 20px;border-radius:25px; background: transparent;">
         <div class="d-flex p-1 justify-content-center align-items-center">
             <div>
                 <h3>Predstave</h3>
@@ -102,7 +102,7 @@ $user = User::getUserUsername($_SESSION['current_user'],$konekcija)[0];
            while (($predstava=$predstave->fetch_assoc())!=null){?>
 
            <div class="col">
-               <div class="card" style="background-color: rgb(255, 122, 127, .8);border-radius:25px">
+               <div class="card" style="background: radial-gradient(circle, rgba(122,20,65,1) 0%, rgba(74,19,27,1) 100%);border-radius:25px">
                    <div class="card-body">
                        <h5 class="card-title"><?=$predstava['naziv']?></h5>
                        <p class="card-text"><?=$predstava['reditelj']?></p>

@@ -1,8 +1,9 @@
 body{
+    
     background-image: url("teatar.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: fixed; 
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .header{
@@ -11,8 +12,8 @@ body{
 }
 
 .nav-link:hover{
-color: rgb(231, 177, 29);
-}
+color: rgb(231, 177, 29);   
+} 
 
 
 .naslov{
@@ -48,7 +49,7 @@ form{
 }
 
 .prikazPodataka{
-    background-color: rgba(159, 53, 83, 0.75);
+    background: radial-gradient(circle, rgba(122,20,65,1) 0%, rgba(19,44,74,1) 100%);
     color: white;
     width: 70vw;
     margin-top: 50px;
