@@ -33,3 +33,57 @@ $("#pretraga").on("keyup", function () {
       }
     }
   });
+
+  // sort po glumcima
+  $("#sortBtn").click(function () {
+    let sortiran = false;
+
+    while (!sortiran) {
+      sortiran = true;
+      let objekti = $(".col");
+      let zaZamenu;
+      let i;
+      for (i = 0; i < objekti.length - 1; i++) {
+        zaZamenu = false;
+        let el1 = objekti[i].getElementsByTagName("h5")[0];
+        let el2 = objekti[i + 1].getElementsByTagName("h5")[0];
+        if (el1.innerHTML.toLowerCase() > el2.innerHTML.toLowerCase()) {
+          zaZamenu = true;
+          break;
+        }
+      }
+      if (zaZamenu) {
+        objekti[i].parentNode.insertBefore(objekti[i + 1], objekti[i]);
+        sortiran = false;
+      }
+    }
+  });
+
+  // sort po nazivu uloga
+$("#sortOBtn").click(function () {
+    let sortiran = false;
+  
+    while (!sortiran) {
+      sortiran = true;
+      let objekti = $(".col");
+      let zaZamenu;
+      let i;
+      for (i = 0; i < objekti.length - 1; i++) {
+        zaZamenu = false;
+        let el1 = objekti[i].getElementsByClassName(
+          "card-text karticaNazivUloge"
+        )[0];
+        let el2 = objekti[i + 1].getElementsByClassName(
+          "card-text karticaNazivUloge"
+        )[0];
+        if (el1.innerHTML.toLowerCase() > el2.innerHTML.toLowerCase()) {
+          zaZamenu = true;
+          break;
+        }
+      }
+      if (zaZamenu) {
+        objekti[i].parentNode.insertBefore(objekti[i + 1], objekti[i]);
+        sortiran = false;
+      }
+    }
+  });
